@@ -1,0 +1,25 @@
+{
+    "bindings": [
+        {
+            "name": "timerDaily",
+            "type": "timerTrigger",
+            "direction": "in",
+            "schedule": "0 0 0 * * *"
+        },
+        {
+            "type": "queue",
+            "name": "igQueue",
+            "queueName": "igtasks",
+            "connection": "socialtracker_STORAGE",
+            "direction": "out"
+        },
+        {
+            "type": "queue",
+            "name": "twQueue",
+            "queueName": "twtasks",
+            "connection": "socialtracker_STORAGE",
+            "direction": "out"
+        }
+    ],
+    "disabled": false
+}
