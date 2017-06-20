@@ -28,9 +28,12 @@ GO
 
 CREATE TABLE dbo.UData
 (
-    [AccID] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES UAccounts (AccID),
+    [AccID] UNIQUEIDENTIFIER NOT NULL FOREIGN KEY REFERENCES UAccounts (AccID),
     [Run] DATETIME NOT NULL DEFAULT(getutcdate()),
-    [FCount] INT NOT NULL
+    [FollowCount] INT NOT NULL,
+    [FollowerCount] INT NOT NULL,
+
+    PRIMARY KEY ([AccID], [Run])
 ); CREATE INDEX IX_UData_AccID ON dbo.UData ([AccID])
 GO
 ```
