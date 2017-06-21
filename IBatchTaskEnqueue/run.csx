@@ -18,7 +18,7 @@ public static void Run(TimerInfo timerDaily, ICollector<string> igQueue, ICollec
 {
     using (SqlConnection dbConn = new SqlConnection())
     {
-        dbConn.ConnectionString = ConfigurationManager.ConnectionStrings["socialtracker_DB"].ConnectionString;
+        dbConn.ConnectionString = ConfigurationManager.ConnectionStrings["db"].ConnectionString;
         dbConn.Open();
 
         SqlCommand RetrieveCompanies = new SqlCommand("SELECT [AccID], [Network], [Username] FROM UAccounts WHERE [Removed] = 0", dbConn);

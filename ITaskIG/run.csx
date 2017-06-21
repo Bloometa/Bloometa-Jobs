@@ -28,7 +28,7 @@ public static void Run(string accountData, TraceWriter log)
 
     using (SqlConnection dbConn = new SqlConnection())
     {
-        dbConn.ConnectionString = ConfigurationManager.ConnectionStrings["socialtracker_DB"].ConnectionString;
+        dbConn.ConnectionString = ConfigurationManager.ConnectionStrings["db"].ConnectionString;
         dbConn.Open();
         using(SqlCommand InsertDataRow =
             new SqlCommand("INSERT INTO UData ([AccID], [FollowCount], [FollowerCount]) VALUES (@AccID, @FollowCount, @FollowerCount)", dbConn))
