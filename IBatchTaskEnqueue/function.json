@@ -10,14 +10,14 @@
             "type": "queue",
             "name": "igQueue",
             "queueName": "igtasks",
-            "connection": "socialtracker_STORAGE",
+            "connection": "storage",
             "direction": "out"
         },
         {
             "type": "queue",
             "name": "twQueue",
             "queueName": "twtasks",
-            "connection": "socialtracker_STORAGE",
+            "connection": "storage",
             "direction": "out"
         }
     ],
