@@ -85,11 +85,29 @@ public static void Run(TimerInfo timer, TraceWriter log)
                     new SqlCommand(@"
                     INSERT INTO UData ([AccID], [FollowCount], [FollowerCount]) VALUES (@AccID, @FollowCount, @FollowerCount)", dbConn))
                 {
-                    InsertDataRow.Parameters.Add("@AccID", SqlDbType.UniqueIdentifier).Value = new Guid((string)acc.SelectToken("AccID"));
+                    InsertDataRow.Parameters.Add("@AccID", SqlDbType.UniqueIdentifier).Value = Accounts[User.Id].AccID;
                     InsertDataRow.Parameters.Add("@FollowCount", SqlDbType.Int).Value = User.FriendsCount;
                     InsertDataRow.Parameters.Add("@FollowerCount", SqlDbType.Int).Value = User.FollowersCount;
                     
                     InsertDataRow.ExecuteNonQuery();
+                }
+
+                if (Accounts[User.Id].UserName != User.ScreenName 
+                    || Accounts[User.Id].FullName != User.Name)
+                {
+                    log.Info($"Account {Accounts[User.Id].AccID} is out of date, updating with latest data");
+                    using(SqlCommand UpdateAccDetails =
+                        new SqlCommand(@"
+                        UPDATE UAccounts
+                        SET [UserName] = @UserName, [FullName] = @FullName
+                        WHERE [AccID] = @AccID", dbConn))
+                    {
+                        UpdateAccDetails.Parameters.Add("@AccID", SqlDbType.UniqueIdentifier).Value = Accounts[User.Id].AccID;
+                        UpdateAccDetails.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = User.ScreenName;
+                        UpdateAccDetails.Parameters.Add("@FullName", SqlDbType.NVarChar).Value = User.Name;
+                        
+                        UpdateAccDetails.ExecuteNonQuery();
+                    }
                 }
             }
         }
