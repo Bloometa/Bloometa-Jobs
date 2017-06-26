@@ -64,10 +64,10 @@ public static void Run(TimerInfo timer, TraceWriter log)
 
         UserIDs = new List<long>(Accounts.Keys);
         var TWCredentials = new TwitterCredentials(
-            "pPeCNuIbXnnXNE2gpLhf2M3IJ",
-            "GKGipEoIWmJGg6o8kI8BzV04R3LjxinNOKl7aSkjwQnHR2Bzr8",
-            "729417297996095488-3Rs0M9XyiS4YulJpG9kMwnvj5dqEmLR",
-            "uqNWQNjNDHxvKrH5l3gQg47NedGzYGi97C4tpxaCYbDrA");
+            ConfigurationManager.ConnectionStrings["TwitterKey"].ConnectionString,
+            ConfigurationManager.ConnectionStrings["TwitterSecret"].ConnectionString,
+            ConfigurationManager.ConnectionStrings["TwitterAccessKey"].ConnectionString,
+            ConfigurationManager.ConnectionStrings["TwitterAccessSecret"].ConnectionString);
         
         try
         {
