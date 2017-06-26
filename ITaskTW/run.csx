@@ -4,6 +4,7 @@
 using System;
 using System.Configuration;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Tweetinvi;
@@ -11,15 +12,15 @@ using Tweetinvi.Models;
 
 class Account
 {
-    Guid AccID { get; set; }
-    string UserName { get; set; }
-    string UserID { get; set; }
-    string FullName { get; set; }
+    public Guid AccID { get; set; }
+    public string UserName { get; set; }
+    public string UserID { get; set; }
+    public string FullName { get; set; }
 }
 
 public static void Run(TimerInfo timer, TraceWriter log)
 {
-    IEnumerable<IUser> UserIDs;
+    IEnumerable<long> UserIDs;
     Dictionary<long, Account> Accounts = new Dictionary<long, Account>();
     using (SqlConnection dbConn = new SqlConnection())
     {
