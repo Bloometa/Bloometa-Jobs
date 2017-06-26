@@ -75,7 +75,7 @@ public static void Run(TimerInfo timer, TraceWriter log)
         {
             Users = Auth.ExecuteOperationWithCredentials(TWCredentials, () =>
             {
-                return Tweetinvi.User.GetUsersFromIDs(UserIDs);
+                return Tweetinvi.User.GetUsersFromIds(UserIDs);
             });
 
             foreach (IUser User in Users)
