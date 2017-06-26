@@ -1,0 +1,9 @@
+{
+    "frameworks": {
+        "net46": {
+            "dependencies": {
+                "TweetinviAPI": "2.0.0"
+            }
+        }
+    }
+}
