@@ -29,7 +29,7 @@ public static void Run(TimerInfo timer, TraceWriter log)
 
         SqlCommand RetrieveTWAccounts =
             new SqlCommand(@"
-            SELECT TOP(100) [AccID], [UserName], [UserID], [FullName] FROM UAccounts Acc
+            SELECT TOP(100) Acc.[AccID], Acc.[UserName], Acc.[UserID], Acc.[FullName] FROM UAccounts Acc
             INNER JOIN (
                 SELECT TOP(100) [AccID], MAX([Run]) AS [LatestRun] FROM UData
                 GROUP BY [AccID]
