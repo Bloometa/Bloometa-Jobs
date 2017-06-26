@@ -63,6 +63,7 @@ public static void Run(TimerInfo timer, TraceWriter log)
             }
         }
 
+        IEnumerable<IUser> Users;
         UserIDs = new List<long>(Accounts.Keys);
         var TWCredentials = new TwitterCredentials(
             ConfigurationManager.ConnectionStrings["TwitterKey"].ConnectionString,
